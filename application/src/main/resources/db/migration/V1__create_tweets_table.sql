@@ -1,0 +1,4 @@
+CREATE TABLE tweets (
+  created TIMESTAMP NOT NULL,
+  status VARCHAR(255) NOT NULL
+);
