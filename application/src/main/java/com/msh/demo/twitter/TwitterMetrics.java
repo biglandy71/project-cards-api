@@ -7,8 +7,9 @@ import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import io.dropwizard.lifecycle.Managed;
 import twitter4j.StallWarning;
-import twitter4j.StatusUpdate;
+import twitter4j.Status;
 
+import static com.codahale.metrics.MetricRegistry.name;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TwitterMetrics implements Managed {
@@ -17,8 +18,8 @@ public class TwitterMetrics implements Managed {
   private final EventBus bus;
 
   public TwitterMetrics(MetricRegistry metrics, EventBus bus) {
-    this.numStatusUpdates = metrics.counter("num-status-updates");
-    this.numStallWarnings = metrics.counter("num-stall-warnings");
+    this.numStatusUpdates = metrics.counter(name(getClass(), "num-status-updates"));
+    this.numStallWarnings = metrics.counter(name(getClass(), "num-stall-warnings"));
     this.bus = checkNotNull(bus);
   }
 
@@ -34,7 +35,7 @@ public class TwitterMetrics implements Managed {
 
   @Subscribe
   @AllowConcurrentEvents
-  public void onStatusUpdate(StatusUpdate update) {
+  public void onStatusUpdate(Status update) {
     numStatusUpdates.inc();
   }
 
