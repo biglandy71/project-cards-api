@@ -59,14 +59,6 @@ public class TwitterResource {
     return dao.findRecentTweets();
   }
 
-  @GET
-  @ApiOperation("Guess a number")
-  @Path("/guess")
-  @Timed
-  public int guess(int i) {
-    return i;
-  }
-
   @Subscribe
   @AllowConcurrentEvents
   public void onStatusUpdate(Status status) {
