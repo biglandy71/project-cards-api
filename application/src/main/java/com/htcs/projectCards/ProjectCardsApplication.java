@@ -1,5 +1,6 @@
 package com.htcs.projectCards;
 
+import com.htcs.projectCards.di.ProjectCardsComponent;
 import com.htcs.projectCards.resources.CardResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -25,6 +26,8 @@ public class ProjectCardsApplication extends Application<ProjectCardsConfigurati
         return config.getDataSourceFactory();
       }
     });
+
+//    ProjectCardsComponent projectCardsComponent = DaggerClapiComponent.builder().build();
 
     swagger.onInitialize(bootstrap);
   }

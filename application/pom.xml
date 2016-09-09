@@ -84,6 +84,14 @@
             <groupId>io.federecio</groupId>
             <artifactId>dropwizard-swagger</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.dropwizard-bundles</groupId>
+            <artifactId>dropwizard-version-bundle</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard-bundles</groupId>
+            <artifactId>dropwizard-api-key-bundle</artifactId>
+        </dependency>
 
         <!--Dagger-->
         <dependency>

@@ -15,6 +15,7 @@
         <dropwizard.version>0.7.1</dropwizard.version>
         <dagger.version>2.0.1</dagger.version>
         <jackson.version>2.5.4</jackson.version>
+        <dropwizard-bundle.version>0.8.4-1</dropwizard-bundle.version>
     </properties>
 
     <build>
@@ -68,6 +69,16 @@
                         <artifactId>jsr311-api</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard-bundles</groupId>
+                <artifactId>dropwizard-version-bundle</artifactId>
+                <version>${dropwizard-bundle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard-bundles</groupId>
+                <artifactId>dropwizard-api-key-bundle</artifactId>
+                <version>${dropwizard-bundle.version}</version>
             </dependency>
 
             <!-- dagger -->

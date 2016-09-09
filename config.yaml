@@ -2,3 +2,10 @@ database:
   driverClass: org.h2.Driver
   user: sa
   url: jdbc:h2:./demo
+
+authentication:
+  basic-http:
+    cache-spec: maximumSize=1000, expireAfterAccess=10m
+    realm: ProjectCards
+    keys:
+      project-cards-mobile: d87bacfa93261ab6f8ce27a6115d284b

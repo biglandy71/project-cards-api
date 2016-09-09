@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 @Singleton
 @Component(modules = {ProjectCardsModule.class})
 public interface ProjectCardsComponent {
-//  CardResource getCardResource();
+  CardResource getCardResource();
 
 //  DynamoDbHealthCheck getDynamoDbHealthCheck();
 
