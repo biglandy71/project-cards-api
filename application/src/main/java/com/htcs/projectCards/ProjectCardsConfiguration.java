@@ -1,4 +1,4 @@
-package com.msh.demo;
+package com.htcs.projectCards;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;

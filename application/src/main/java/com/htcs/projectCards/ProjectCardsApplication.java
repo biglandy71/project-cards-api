@@ -1,5 +1,6 @@
-package com.msh.demo;
+package com.htcs.projectCards;
 
+import com.htcs.projectCards.resources.CardResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.flyway.FlywayBundle;
@@ -33,6 +34,10 @@ public class ProjectCardsApplication extends Application<ProjectCardsConfigurati
     // Database
     DBIFactory factory = new DBIFactory();
     DBI db = factory.build(env, config.getDataSourceFactory(), "db");
+
+    //TODO use dependency injection
+    CardResource cardResource = new CardResource();
+    env.jersey().register(cardResource);
 
     swagger.onRun(config, env, "localhost");
   }
