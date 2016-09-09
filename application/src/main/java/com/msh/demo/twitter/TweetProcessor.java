@@ -1,11 +1,9 @@
 package com.msh.demo.twitter;
 
-import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import io.dropwizard.lifecycle.Managed;
 import org.joda.time.DateTime;
-import twitter4j.StallWarning;
 import twitter4j.Status;
 
 import java.util.Random;

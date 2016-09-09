@@ -1,9 +1,3 @@
-twitter:
-  consumer-key:
-  consumer-secret:
-  user-key:
-  user-secret:
-
 database:
   driverClass: org.h2.Driver
   user: sa
