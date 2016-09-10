@@ -1,6 +1,7 @@
 package com.htcs.projectCards;
 
 import com.htcs.projectCards.di.ProjectCardsComponent;
+import com.htcs.projectCards.resources.CardCollectionResource;
 import com.htcs.projectCards.resources.CardResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -40,10 +41,15 @@ public class ProjectCardsApplication extends Application<ProjectCardsConfigurati
     DBIFactory factory = new DBIFactory();
     DBI db = factory.build(env, config.getDataSourceFactory(), "db");
 
-    //TODO use dependency injection
-    CardResource cardResource = new CardResource();
-    env.jersey().register(cardResource);
+    setupResources(env);
 
     swagger.onRun(config, env, "localhost");
+  }
+
+  private void setupResources(Environment env) {
+    //TODO use dependency injection
+    env.jersey().register(new CardResource());
+
+    env.jersey().register(new CardCollectionResource());
   }
 }

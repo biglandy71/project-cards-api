@@ -36,6 +36,7 @@ CREATE TABLE `cardTypes` (
   `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 CREATE TABLE `collectionTags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cardCollectionId` int(11) DEFAULT NULL,
