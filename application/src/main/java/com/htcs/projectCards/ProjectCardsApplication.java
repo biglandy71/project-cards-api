@@ -27,6 +27,8 @@ public class ProjectCardsApplication extends Application<ProjectCardsConfigurati
       }
     });
 
+    //TODO this is the last step to get Auth working
+    //TODO this is the last step ... I am missing something ... get get DI working
 //    ProjectCardsComponent projectCardsComponent = DaggerClapiComponent.builder().build();
 
     swagger.onInitialize(bootstrap);

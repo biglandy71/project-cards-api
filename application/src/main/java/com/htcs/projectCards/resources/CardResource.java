@@ -1,7 +1,10 @@
 package com.htcs.projectCards.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.common.collect.Lists;
 import com.htcs.projectCards.core.cards.Card;
+import com.htcs.projectCards.core.cards.CardType;
+import com.htcs.projectCards.core.cards.MtgCard;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
@@ -43,12 +46,25 @@ public class CardResource {
       @ApiResponse(code = 404, message = "Unable to look up Card", response = String.class)
   })
   @Timed
-  public Response getSubmission(@Auth String apiUser,
-                                @PathParam("cardId") UUID cardId) {
-
-    Card card = new Card(UUID.randomUUID());
+  public Response getCard(@Auth String apiUser,
+                                @PathParam("cardId") long cardId) {
     return Response.ok()
-        .entity(card)
+        .entity(mockMtgCard())
         .build();
+  }
+
+  /**
+   * TODO: Probably don't want this without some restrictions
+   * @param apiUser
+   * @return
+   */
+  public Response getCards(@Auth String apiUser) {
+    return Response.ok()
+        .entity(Lists.newArrayList(mockMtgCard(), mockMtgCard()))
+        .build();
+  }
+
+  private Card mockMtgCard() {
+    return new MtgCard(1l, 1l, 1l, CardType.MTG);
   }
 }
