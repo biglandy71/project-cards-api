@@ -14,7 +14,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>0.7.1</dropwizard.version>
         <dagger.version>2.0.1</dagger.version>
-
+        <jackson.version>2.6.3</jackson.version>
         <dropwizard-bundle.version>0.8.4-1</dropwizard-bundle.version>
 
         <retrofit.version>2.1.0</retrofit.version>
@@ -27,8 +27,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>2.3.2</version>
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>1.8</source>
+                        <target>1.8</target>
                         <compilerArgument>-Xlint:all</compilerArgument>
                         <showWarnings>true</showWarnings>
                         <showDeprecation>true</showDeprecation>
@@ -61,6 +61,11 @@
                 <version>0.7.0-1</version>
             </dependency>
             <dependency>
+                <groupId>io.dropwizard.modules</groupId>
+                <artifactId>dropwizard-java8</artifactId>
+                <version>${dropwizard.java8.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.federecio</groupId>
                 <artifactId>dropwizard-swagger</artifactId>
                 <version>0.5.1</version>
@@ -81,6 +86,38 @@
                 <groupId>io.dropwizard-bundles</groupId>
                 <artifactId>dropwizard-api-key-bundle</artifactId>
                 <version>${dropwizard-bundle.version}</version>
+            </dependency>
+
+            <!-- Jackson dependencies -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-parameter-names</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-parameter-names</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
 
             <!-- dagger -->

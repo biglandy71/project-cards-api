@@ -57,5 +57,18 @@ public class UserResource {
         .build();
   }
 
-//  @POgit 
+  @POST
+  @ApiOperation("Post an action on a submission to run through the state machine.")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Retrieved a submission by id", response = UserRequest.class),
+      @ApiResponse(code = 404, message = "Unable to look up Submission", response = String.class),
+      @ApiResponse(code = 409, message = "Version mismatch for a submission", response = String.class),
+      @ApiResponse(code = 422, message = "State machine error", response = String.class),
+      @ApiResponse(code = 500, message = "Enforcing content or actions for a response. " +
+          "Requirements not met.", response = String.class)
+  })
+  @Timed
+  public Response createUser(@ApiParam("userRequest") UserRequest userRequest) {
+    return Response.ok().entity(userRequest).build();
+  }
 }

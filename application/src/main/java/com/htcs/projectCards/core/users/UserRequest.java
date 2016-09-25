@@ -1,17 +1,21 @@
 package com.htcs.projectCards.core.users;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
-import javax.inject.Inject;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserRequest {
+
   private final String firstName;
+
   private final String lastName;
+
   private final String userName;
+
   private final String password;
 
-  @JsonCreator
-  public UserRequest(String firstName, String lastName, String userName, String password) {
+  public UserRequest(@JsonProperty("firstName") String firstName,
+                     @JsonProperty("lastName") String lastName,
+                     @JsonProperty("userName") String userName,
+                     @JsonProperty("password") String password) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.userName = userName;

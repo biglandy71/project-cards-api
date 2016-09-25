@@ -1,6 +1,10 @@
 package com.htcs.projectCards.di;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.htcs.projectCards.core.users.UserService;
 import com.htcs.projectCards.core.users.UserServiceImpl;
 import com.htcs.projectCards.helpers.MockHelper;
@@ -21,10 +25,10 @@ public class ProjectCardsModule {
   @Singleton
   @Provides
   public ObjectMapper provideObjectMapper() {
-//    mapper.registerModule(new ParameterNamesModule());
-//    mapper.registerModule(new Jdk8Module());
-//    mapper.registerModule(new JSR310Module());
-//    mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+    mapper.registerModule(new ParameterNamesModule());
+    mapper.registerModule(new Jdk8Module());
+    mapper.registerModule(new JSR310Module());
+    mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
     return mapper;
   }
 
