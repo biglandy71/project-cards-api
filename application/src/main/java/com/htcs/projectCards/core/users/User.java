@@ -1,5 +1,7 @@
 package com.htcs.projectCards.core.users;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public class User {
   private final long id;
   private final String firstName;
@@ -7,6 +9,7 @@ public class User {
   private final String userName;
   private final String password;
 
+  @JsonCreator
   public User(long id, String firstName, String lastName, String userName, String password) {
     this.id = id;
     this.firstName = firstName;

@@ -1,4 +1,10 @@
 package com.htcs.projectCards.core.users;
 
-public class UserServiceImpl {
+import javax.inject.Inject;
+
+public class UserServiceImpl implements UserService {
+  @Inject
+  public UserServiceImpl() {
+
+  }
 }

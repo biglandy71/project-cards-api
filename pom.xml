@@ -14,8 +14,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>0.7.1</dropwizard.version>
         <dagger.version>2.0.1</dagger.version>
-        <jackson.version>2.5.4</jackson.version>
+
         <dropwizard-bundle.version>0.8.4-1</dropwizard-bundle.version>
+
+        <retrofit.version>2.1.0</retrofit.version>
     </properties>
 
     <build>
@@ -93,26 +95,17 @@
                 <version>${dagger.version}</version>
             </dependency>
 
-            <!--Jackson-->
+            <!-- retrofit -->
             <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jdk8</artifactId>
-                <version>${jackson.version}</version>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>retrofit</artifactId>
+                <version>${retrofit.version}</version>
             </dependency>
+            <!-- Jackson specific things-->
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jsr310</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-parameter-names</artifactId>
-                <version>${jackson.version}</version>
+                <groupId>com.squareup.retrofit2</groupId>
+                <artifactId>converter-jackson</artifactId>
+                <version>${retrofit.version}</version>
             </dependency>
 
             <dependency>
