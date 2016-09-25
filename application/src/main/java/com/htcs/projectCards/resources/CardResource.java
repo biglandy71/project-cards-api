@@ -6,6 +6,7 @@ import com.htcs.projectCards.core.cards.Card;
 import com.htcs.projectCards.core.cards.CardRequest;
 import com.htcs.projectCards.core.cards.CardType;
 import com.htcs.projectCards.core.cards.MtgCard;
+import com.htcs.projectCards.helpers.MockHelper;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -29,9 +30,11 @@ import java.util.UUID;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CardResource {
-  @Inject
-  public CardResource() {
+  final private MockHelper mockHelper;
 
+  @Inject
+  public CardResource(MockHelper mockHelper) {
+    this.mockHelper = mockHelper;
   }
 
   /**
@@ -51,28 +54,21 @@ public class CardResource {
   public Response getCard(@Auth String apiUser,
                                 @PathParam("cardId") long cardId) {
     return Response.ok()
-        .entity(mockMtgCard())
+        .entity(mockHelper.mockMtgCard())
         .build();
   }
 
-////  TODO update text
-//  @POST
-//  @ApiOperation("The initial creation of a Submission.")
-//  @ApiResponses({
-//      @ApiResponse(code = 200, message = "Submission post completed successfully", response = Card.class),
-//      @ApiResponse(code = 422, message = "State machine error", response = String.class),
-//      @ApiResponse(code = 404, message = "Unable to look up Submission", response = String.class)
-//  })
-//  @Timed
-//  public Response createCard(@Auth String apiUser,
-//                             @ApiParam("cardRequest") CardRequest cardRequest) {
-//
-////    return Response.ok().build();
-//    return null;
-//  }
-
-
-  private Card mockMtgCard() {
-    return new MtgCard(1l, 1l, 1l, CardType.MTG);
+//  TODO update text
+  @POST
+  @ApiOperation("The initial creation of a Submission.")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Submission post completed successfully", response = Card.class),
+      @ApiResponse(code = 422, message = "State machine error", response = String.class),
+      @ApiResponse(code = 404, message = "Unable to look up Submission", response = String.class)
+  })
+  @Timed
+  public Response createCard(@ApiParam("cardRequest") CardRequest cardRequest) {
+    return Response.ok().entity(cardRequest).build();
   }
+
 }

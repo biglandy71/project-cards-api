@@ -68,6 +68,7 @@ public class UserResource {
           "Requirements not met.", response = String.class)
   })
   @Timed
+  //TODO add @Auth
   public Response createUser(@ApiParam("userRequest") UserRequest userRequest) {
     return Response.ok().entity(userRequest).build();
   }

@@ -8,6 +8,7 @@ import com.htcs.projectCards.core.cards.MtgCard;
 import com.htcs.projectCards.core.collections.CardCollection;
 import com.htcs.projectCards.core.collections.CardCollectionType;
 import com.htcs.projectCards.core.users.User;
+import com.htcs.projectCards.helpers.MockHelper;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
@@ -29,8 +30,11 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CardCollectionResource {
+  private final MockHelper mockHelper;
+
   @Inject
-  public CardCollectionResource() {
+  public CardCollectionResource(MockHelper mockHelper) {
+    this.mockHelper = mockHelper;
   }
 
 
@@ -48,26 +52,10 @@ public class CardCollectionResource {
       @ApiResponse(code = 404, message = "Unable to look up CardCollection", response = String.class)
   })
   @Timed
-  public Response getCard(@Auth String apiUser,
-                          @PathParam("collectionId") long collectionId) {
+  public Response getCardCollection(@Auth String apiUser,
+                                    @PathParam("collectionId") long collectionId) {
     return Response.ok()
-        .entity(mockCardCollection(collectionId))
+        .entity(mockHelper.mockCardCollection(collectionId))
         .build();
-  }
-
-  //TODO move this out to a MockHelpers.class once DI is working and inject it here.
-  private CardCollection mockCardCollection(long collectionId) {
-    return new CardCollection(collectionId, "Wossum's Card Collection", CardType.MTG, "some random notes",
-        CardCollectionType.WISH_LIST, mockUser(), mockCards());
-  }
-
-  private List<Card> mockCards() {
-    Card card1 = new MtgCard(1l, 1l, 1l, CardType.MTG);
-    Card card2 = new MtgCard(2l, 1l, 1l, CardType.MTG);
-    return Lists.newArrayList(card1, card2);
-  }
-
-  private User mockUser() {
-    return new User(1l, "David", "Wossum", "wossom", "Iam2c00l");
   }
 }
