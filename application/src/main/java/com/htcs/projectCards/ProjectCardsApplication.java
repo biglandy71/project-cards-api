@@ -15,10 +15,6 @@ import org.skife.jdbi.v2.DBI;
 public class ProjectCardsApplication extends Application<ProjectCardsConfiguration> {
   private final SwaggerDropwizard swagger = new SwaggerDropwizard();
 
-  public ProjectCardsApplication() {
-    System.out.print("");
-  }
-
   public static void main(String[] args) throws Exception {
     new ProjectCardsApplication().run(args);
   }
@@ -43,12 +39,7 @@ public class ProjectCardsApplication extends Application<ProjectCardsConfigurati
     DBIFactory factory = new DBIFactory();
     DBI db = factory.build(env, config.getDataSourceFactory(), "db");
 
-    try {
-      setupResources(env);
-    } catch (Exception e) {
-      System.out.print("!!!!!!!!!" + e);
-    }
-
+    setupResources(env);
 
     swagger.onRun(config, env, "localhost");
   }
